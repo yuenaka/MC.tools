@@ -14,24 +14,24 @@
   foreach($text as $line) {
     if (strpos($line, '*') !== false) {
       $line = str_replace('*', '', $line);
-    // 変換対象 句読点前を検出したい
+      $line = strip_tags($line);
+      // 変換対象 句読点前を検出したい
       $pattern = "/([、。！？」])/u";
       $array = preg_split($pattern, $line, -1, PREG_SPLIT_DELIM_CAPTURE);
-      
-    // test
-      echo nl2br(print_r($array,true));
-      
+
+      $line = "";
       foreach ($array as $work) {
         if (!preg_match($pattern, $work)) {
-          $work = mb_convert_kana($work, "KVC");
+            // 文字列の最後を全角カタカナに変換
+          $tmp = mb_convert_kana(mb_substr($work, -1), "KVC");
+          $work = substr_replace($work, $tmp, -(strlen($tmp)));
         }
-        echo $work;
+        $line .= $work;
       }
+      echo nl2br(print_r($line,true));
     }
-    echo nl2br($line);
-  }
-  ?>
-  <br />
-  <a href="index.php">TOP</a>
-</body>
-</html>
+    ?>
+    <br />
+    <a href="index.php">TOP</a>
+  </body>
+  </html>
