@@ -6,7 +6,7 @@
 </head>
 <body>
 <form>
-<textarea name="novel" cols="100" rows="15">
+<textarea name="novel" cols="100" rows="15" onclick="this.focus()" onfocus="this.select()">
 <?php
   // 改行コード(\r\n, \r, \n) を全て \n に統一
   $text = str_replace(array('\r\n','\r','\n'), '\n', $_POST["novel"]);
@@ -17,7 +17,7 @@
     $line = strip_tags($line);
     if (strpos($line, '*') !== false) {
       $line = str_replace('*', '', $line);
-      // 変換対象 句読点前を検出したい
+      // 変換対象
       $pattern = "/([、。！？」\n\s])/u";
       $array = preg_split($pattern, $line, -1, PREG_SPLIT_DELIM_CAPTURE);
 
@@ -31,7 +31,7 @@
         $line .= $work;
       }
     }
-    echo nl2br(print_r($line,true));
+    echo print_r($line,true);
   }
   ?>
 </textarea>
