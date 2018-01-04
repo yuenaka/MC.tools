@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<link rel="stylesheet" href="style.css" type="text/css">
   <title>変換完了</title>
 </head>
 <body>
+<div id="main">
+<h2>Result</h2>
+<div class="text">
+不具合等のご連絡は<label for="check">こちら</label>まで。<br />
+<input id="check" type="checkbox" style="display:none">
+<form id="mailform" action="mail.php" method="post">
+<p><label for="sendername">お名前：</label><input type="text" name="name" id="sendername" size="40"></p>
+<textarea name="mailbody" cols="50" rows="3" onclick="this.focus()" onfocus="this.select()">
+返信が必要な場合はリターンアドレスの明記をお願いします。
+</textarea><br />
+<input type="submit" value="送信" />
+</form>
+<br />
 <form>
 <textarea name="novel" cols="100" rows="15" onclick="this.focus()" onfocus="this.select()">
 <?php
@@ -37,6 +52,7 @@
 </textarea>
 </form>
   <br />
-  <a href="index.php">TOP</a>
+  <a href="form_from.php">←Back</a>
+</div>
 </body>
 </html>

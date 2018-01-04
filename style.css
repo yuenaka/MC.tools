@@ -24,7 +24,7 @@ textarea{
 	line-height:17px;
 }
 textarea,input{
-	color:#ff9999;
+	color:#ff3333;
 	border:1px solid #999999;
 	background-color:#eeeeee;
 	padding:3px;
@@ -53,6 +53,13 @@ h2:first-letter{
 	font-size:43px;
 	color:#ff9999;
 }
+h3{
+	font-size:25px;
+	color:#cccccc;
+	font-weight:normal;
+	margin:0px;
+	padding:0px;
+}
 .text{
 	position:relative;
 	bottom:20px;
@@ -70,4 +77,19 @@ html,body{
 
 	scrollbar-highlight-color:#999999;
 	scrollbar-shadow-color:#999999;
+}
+/* メールフォーム用 */
+#mailform {
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  height: 0;
+  overflow: hidden;
+  background: #ffffff;
+  margin-top: 0px;
+  padding: 0;
+  border-radius: 5px;
+}
+input:checked + #mailform {
+  height: auto;
+  padding: 5px;
 }
