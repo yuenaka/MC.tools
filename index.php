@@ -5,8 +5,7 @@
 <title>entrance</title>
 </head>
 <body>
-<!-- Open https://localhost/~ubuntu/index.php -->
-<a href="form_from.php">FORM</a>
+<a href="replacetool/form_from.php">FORM</a>
 </form>
 </body>
 </html>

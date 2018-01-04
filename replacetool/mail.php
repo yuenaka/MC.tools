@@ -33,7 +33,7 @@ if (version_compare(PHP_VERSION, '5.1.0', '>=')) {//PHP5.1.0以上の場合の�
 //---------------------------　必須設定　必ず設定してください　-----------------------
 
 //サイトのトップページのURL　※デフォルトでは送信完了後に「トップページへ戻る」ボタンが表示されますので
-$site_top = "http://fictionaholic.red/";
+$site_top = "http://fictionaholic.red/replacetool/form_from.php";
 
 // 管理者メールアドレス ※メールを受け取るメールアドレス(複数指定する場合は「,」で区切ってください 例 $to = "aa@aa.aa,bb@bb.bb";)
 $to = "yura631224@gmail.com";
@@ -61,7 +61,7 @@ $Referer_check_domain = "fictionaholic.red";
 // 管理者宛のメールで差出人を送信者のメールアドレスにする(する=1, しない=0)
 // する場合は、メール入力欄のname属性の値を「$Email」で指定した値にしてください。
 //メーラーなどで返信する場合に便利なので「する」がおすすめです。
-$userMail = 1;
+$userMail = 0;
 
 // Bccで送るメールアドレス(複数指定する場合は「,」で区切ってください 例 $BccMail = "aa@aa.aa,bb@bb.bb";)
 $BccMail = "";
@@ -298,9 +298,20 @@ if(($jumpPage == 0 && $sendmail == 1) || ($jumpPage == 0 && ($confirmDsp == 0 &&
 <title>完了画面</title>
 </head>
 <body>
+<?php if($empty_flag == 1){ ?>
 <div id="main">
 <div class="text">
-<h2>Thank you</h2>
+<p>入力にエラーがあります。下記をご確認の上「戻る」ボタンにて修正をお願い致します。</p>
+<div style="color:red"><?php echo $errm; ?></div>
+<br /><br /><input type="button" value=" 前画面に戻る " onClick="history.back()">
+</div>
+</div>
+</body>
+</html>
+<?php }else{ ?>
+<div id="main">
+<h1>Thank you</h1>
+<div class="text">
 <p>送信ありがとうございました。<br />
 送信は正常に完了しました。<br /><br />
 <a href="<?php echo $site_top ;?>">戻る&raquo;</a>
